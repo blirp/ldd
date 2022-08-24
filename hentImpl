@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function hent
+{
+  local GROUPID=$(echo "$1" | tr '.' '/')
+  local ARTIFACTID="$2"
+  local VERSION="$3"
+  local NAVN="$4"
+  echo "Henter $ARTIFACTID ned til lib_${NAVN}"
+  mkdir -p lib_${NAVN}
+  curl -s https://repo1.maven.org/maven2/${GROUPID}/${ARTIFACTID}/${VERSION}/${ARTIFACTID}-${VERSION}.jar -o lib_${NAVN}/${ARTIFACTID}-${VERSION}.jar
+}
+
+rm -rf lib
+hent "org.slf4j" "slf4j-nop" "1.7.36" "nop"
+hent "org.slf4j" "slf4j-simple" "1.7.36" "simple"
+hent "ch.qos.logback" "logback-core" "1.2.11" "logback"
+hent "ch.qos.logback" "logback-classic" "1.2.11" "logback"
