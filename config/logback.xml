@@ -5,7 +5,15 @@
         </encoder>
     </appender>
 
+    <appender name="VANLIG" class="ch.qos.logback.core.FileAppender">
+        <file>logs/hallo.log</file>
+        <encoder>
+          <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
     <root level="debug">
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="VANLIG" />
     </root>
 </configuration>
