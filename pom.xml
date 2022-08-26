@@ -14,21 +14,16 @@
     <build>
       <plugins>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.3.0</version>
-          <executions>
-            <execution>
-              <phase>package</phase>
-              <goals>
-                <goal>copy-dependencies</goal>
-              </goals>
-              <configuration>
-                <outputDirectory>${project.build.directory}/lib</outputDirectory>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>        
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>3.1.0</version>
+          <configuration>
+              <mainClass>no.kantega.ldd.Main</mainClass>
+              <additionalClasspathElements>
+                <additionalClasspathElement>config</additionalClasspathElement>
+              </additionalClasspathElements>
+          </configuration>
+        </plugin>
       </plugins>
     </build>
 
@@ -37,6 +32,11 @@
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
         <version>1.7.36</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.2.11</version>
       </dependency>
     </dependencies>
 </project>
