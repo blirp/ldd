@@ -11,6 +11,9 @@ public class Main {
     {
         log.info("Starter opp");
         System.out.println("Hallo, hallo, verden!");
+
+        log.error("Noe gikk galt!");
+        
         log.info("Avslutter");
     }
 }
