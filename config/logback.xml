@@ -1,17 +1,18 @@
 <configuration>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-        <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <appender name="VANLIG" class="ch.qos.logback.core.FileAppender">
-        <file>logs/hallo.log</file>
-        <encoder>
-          <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-        </encoder>
-    </appender>
-
+    <appender name="VANLIG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/hallo.json</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/hallo.%d{yyyy-MM-dd}.json</fileNamePattern>
+         </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+     </appender>
+    
     <root level="debug">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="VANLIG" />
