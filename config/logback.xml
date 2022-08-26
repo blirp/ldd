@@ -24,6 +24,17 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
     </appender>
 
+    <appender name="MODUL" class="ch.qos.logback.core.FileAppender">
+        <file>logs/modul.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/modul.%d{yyyy-MM-dd}.json</fileNamePattern>
+         </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+
+    <logger name="no.kantega.ldd.modul" level="debug" additivity="false">
+        <appender-ref ref="MODUL" />
+    </logger>    
     
     <root level="debug">
         <appender-ref ref="STDOUT" />
