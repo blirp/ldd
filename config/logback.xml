@@ -35,6 +35,8 @@
     <logger name="no.kantega.ldd.modul" level="debug" additivity="false">
         <appender-ref ref="MODUL" />
     </logger>    
+
+    <logger name="no.kantega.ldd.modul.Modul" level="debug" additivity="false" />
     
     <root level="debug">
         <appender-ref ref="STDOUT" />
